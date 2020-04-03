@@ -25,20 +25,20 @@ public final class MyGameStateFactory implements Factory<GameState> {
 		final class MyGameState implements GameState{
 			private GameSetup setup;
 			private ImmutableSet<Piece> remaining;
-			private ImmutableSet<LogEntry> log;
+			private ImmutableList<LogEntry> log;
 			private Player mrX;
 			private List<Player> detective;
 			private List<Player> everyone;
 			private ImmutableSet<Move> moves;
 			private ImmutableSet<Piece> winner;
 			private MyGameState(final GameSetup setup, final ImmutableSet<Piece> remaining,
-								final ImmutableSet<LogEntry> log,final Player mrX, final List<Player> detective){
+								final ImmutableList<LogEntry> log,final Player mrX, final List<Player> detective){
 				this.setup = setup;
 				this.remaining = remaining;
 				this.log = log;
 				this.mrX = mrX;
 				this.detective = detective;
-				if(this.detective.isEmpty()== true) throw new IllegalArgumentException();
+				if(this.detective.isEmpty()== true) throw new NullPointerException();
 				if(this.setup.rounds.isEmpty() == true) throw new IllegalArgumentException();
 				for(final var p : detectives){
 					if(p.has(ScotlandYard.Ticket.DOUBLE) || p.has(ScotlandYard.Ticket.SECRET)){
@@ -92,7 +92,7 @@ public final class MyGameStateFactory implements Factory<GameState> {
 				return null;
 			}
 		}
-		return null;
+		return new MyGameState(setup, ImmutableSet.of(Piece.MrX.MRX), ImmutableList.of(), mrX, detectives);
 	}
 
 }
