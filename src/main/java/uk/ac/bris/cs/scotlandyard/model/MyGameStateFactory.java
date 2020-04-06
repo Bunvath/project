@@ -32,19 +32,21 @@ public final class MyGameStateFactory implements Factory<GameState> {
 			private ImmutableSet<Move> moves;
 			private ImmutableSet<Piece> winner;
 			private MyGameState(final GameSetup setup, final ImmutableSet<Piece> remaining,
-								final ImmutableList<LogEntry> log,final Player mrX, final List<Player> detective){
+								final ImmutableList<LogEntry> log,final Player mrX, final List<Player> detective) {
 				this.setup = setup;
 				this.remaining = remaining;
 				this.log = log;
 				this.mrX = mrX;
 				this.detective = detective;
-				if(this.detective.isEmpty()== true) throw new NullPointerException();
-				if(this.setup.rounds.isEmpty() == true) throw new IllegalArgumentException();
-				for(final var p : detectives){
-					if(p.has(ScotlandYard.Ticket.DOUBLE) || p.has(ScotlandYard.Ticket.SECRET)){
+
+				if (this.setup.rounds.isEmpty() == true) throw new IllegalArgumentException();
+				for (final var p : detectives) {
+					if (p.has(ScotlandYard.Ticket.DOUBLE) || p.has(ScotlandYard.Ticket.SECRET) || mrX.has(ScotlandYard.Ticket.UNDERGROUND) || mrX.has(ScotlandYard.Ticket.BUS) || mrX.has(ScotlandYard.Ticket.TAXI)) {
 						throw new IllegalArgumentException();
 					}
 				}
+
+
 			}
 
 			@Override
@@ -54,14 +56,15 @@ public final class MyGameStateFactory implements Factory<GameState> {
 
 			@Override
 			public ImmutableList<LogEntry> getMrXTravelLog(){
-				return null;
+				return log;
 			}
 
 			@Override
 			public ImmutableSet<Piece> getPlayers(){
+
 				for(final var v : everyone){
 					if (v.isDetective() == true ){
-						return remaining.of(v.piece());
+						remaining.of(v.piece());
 					}
 				}
 				return remaining;
