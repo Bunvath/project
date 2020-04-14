@@ -88,7 +88,7 @@ public final class MyGameStateFactory implements Factory<GameState> {
 				return Optional.of(class PlayerTicketBoard implements TicketBoard {
 					@Override
 					public int getCount(@Nonnull Ticket ticket) {
-						return tickets;
+						return ticket;
 					}
 				}
 				return Optional.empty();
