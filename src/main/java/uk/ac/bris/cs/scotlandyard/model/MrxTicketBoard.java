@@ -26,6 +26,7 @@ public class MrxTicketBoard implements Board.TicketBoard {
         if (ticket == Ticket.UNDERGROUND) return 3;
         if (ticket == Ticket.DOUBLE) return 2;
         if (ticket == Ticket.SECRET) return 5;
+        else return -1;
 
     }
 }

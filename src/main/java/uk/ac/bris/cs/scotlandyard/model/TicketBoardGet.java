@@ -25,6 +25,6 @@ public class PlayerTicketBoard implements Board.TicketBoard {
         if (ticket == Ticket.TAXI) return 4;
         if (ticket == Ticket.BUS) return 3;
         if (ticket == Ticket.UNDERGROUND) return 3;
-
+        else return -1;
     }
 }
