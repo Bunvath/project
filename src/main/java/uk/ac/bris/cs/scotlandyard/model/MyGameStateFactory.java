@@ -64,6 +64,13 @@ public final class MyGameStateFactory implements Factory<GameState> {
 				}
 				if (everyone.isEmpty() == true) throw new IllegalArgumentException();
 				if (setup.graph.nodes().isEmpty()) throw new IllegalArgumentException();
+				for (Player det : detectives){
+					for (Player dets : detectives){
+						if (dets != det) {
+							if (det.location() == dets.location()) throw new IllegalArgumentException();
+						}
+					}
+				}
 			}
 
 			@Override
@@ -189,7 +196,17 @@ public final class MyGameStateFactory implements Factory<GameState> {
 			}
 			@Override
 			public  Optional<TicketBoard> getPlayerTickets(Piece piece){
-				for (final var p : detectives) {
+				Player currentPlayer = null;
+				for(Player v : everyone) if (v.piece() == piece) currentPlayer = v;
+				if (everyone.contains(currentPlayer)) {
+					if (piece.isMrX()) {
+						TicketBoard mrx = new MrxTicketBoard();
+						return Optional.of(mrx);
+					}
+					if (piece.isDetective()) {
+						TicketBoard player = new PlayerTicketBoard();
+						return Optional.of(player);
+					}
 				}
 				return Optional.empty();
 			}
