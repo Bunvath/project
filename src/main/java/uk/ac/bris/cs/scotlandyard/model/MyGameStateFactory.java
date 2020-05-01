@@ -161,7 +161,7 @@ public final class MyGameStateFactory implements Factory<GameState> {
 					GameSetup gameSetup = new GameSetup(ScotlandYard.standardGraph(), setup.rounds);
 					return gameSetup;
 				} catch (IOException e) {throw new RuntimeException("Unable to read game graph", e); }*/
-				if (setup.graph == null) throw new NullPointerException();
+				//if (setup.graph == null) throw new NullPointerException();
 				return setup;
 
 			}
