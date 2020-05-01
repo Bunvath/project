@@ -18,13 +18,14 @@ import uk.ac.bris.cs.scotlandyard.model.Move.*;
 import uk.ac.bris.cs.scotlandyard.model.Piece.*;
 import uk.ac.bris.cs.scotlandyard.model.ScotlandYard.*;
 
-public class PlayerTicketBoard implements Board.TicketBoard {
-
+public class MrxTicketBoard implements Board.TicketBoard {
     @Override
     public int getCount(@Nonnull Ticket ticket) {
         if (ticket == Ticket.TAXI) return 4;
         if (ticket == Ticket.BUS) return 3;
         if (ticket == Ticket.UNDERGROUND) return 3;
+        if (ticket == Ticket.DOUBLE) return 2;
+        if (ticket == Ticket.SECRET) return 5;
 
     }
 }
