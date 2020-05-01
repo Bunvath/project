@@ -24,6 +24,7 @@ public final class Player {
 		this.piece = Objects.requireNonNull(piece);
 		this.tickets = Objects.requireNonNull(tickets);
 		this.location = location;
+
 	}
 	/**
 	 * @return the piece
