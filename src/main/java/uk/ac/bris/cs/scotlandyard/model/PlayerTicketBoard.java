@@ -22,9 +22,11 @@ public class PlayerTicketBoard implements Board.TicketBoard {
 
     @Override
     public int getCount(@Nonnull Ticket ticket) {
-        if (ticket == Ticket.TAXI) return 4;
-        if (ticket == Ticket.BUS) return 3;
+        if (ticket == Ticket.TAXI) return 5;
+        if (ticket == Ticket.BUS) return 4;
         if (ticket == Ticket.UNDERGROUND) return 3;
+        if (ticket == Ticket.SECRET) return 0;
+        if (ticket == Ticket.DOUBLE) return 0;
         else return -1;
     }
 }
