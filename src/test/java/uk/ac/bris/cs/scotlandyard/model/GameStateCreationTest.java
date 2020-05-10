@@ -124,7 +124,8 @@ public class GameStateCreationTest extends ParameterisedModelTestBase {
 
 	@Test public void testTwoPlayerWorks() {
 		gameStateFactory.build(standard24RoundSetup(),
-				blackPlayer(),blackPlayer());
+				blackPlayer(),
+				bluePlayer());
 	}
 
 	@Test public void testSixPlayerWorks() {

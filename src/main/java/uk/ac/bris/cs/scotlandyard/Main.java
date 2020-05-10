@@ -20,6 +20,6 @@ public final class Main {
 		}
 	}
 
-	public static void main(String[] args) { JFXApp.launch(JFXApp.class, args); }
+	public static void main(String[] args) { ;JFXApp.launch(JFXApp.class, args); }
 
 }
